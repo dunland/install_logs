@@ -17,6 +17,14 @@
 
 ## Packages
 Bei Kompatibilitätsproblemen mit von PyPi (pip) bereitgestellten packages können Windows binaries von [Christoph Gohlke](https://www.lfd.uci.edu/~gohlke/pythonlibs/) heruntergeladen werden.
+### Geopandas:
+#### known issues
+01.02.2019
+- `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl` failed: _A GDAL API version must be specified. Provide a path to gdal-config using a GDAL_CONFIG environment variable or use a GDAL_VERSION environment variable._
+  - bei diesem Fehler ist die manuelle Installation von fiona nötig:  
+  `pip.exe install C:\Users\David\python\packages\Fiona-1.8.4-cp37-cp37m-win32.whl` ✓
+  - dann kann geopandas fehlerfrei installiert werden:  
+   `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl`✓
 
 ### ipykernel
 zur Ausführung von ipython kernels, worauf z.B. Jupyter Notebook und IPython basiert.  
@@ -72,6 +80,7 @@ file can be an on-disk file opened for binary reading, an **io.BytesIO** object,
 
 ---
 ## Bekannte Probleme, Installationen, Debugging etc.
+
 ### installing virtualenvwrapper für (atom-)Python3.7  
 01.02.2019  
 - ![PATH Variable am 1.2.2019](img/20190201PATH.png)  
@@ -83,15 +92,13 @@ file can be an on-disk file opened for binary reading, an **io.BytesIO** object,
 - dann habe ich python-atom mit dem Virtualenv-Package in Atom aktiviert
 
 ### ipykernel für Atom einrichten für _Hydrogen_
-01.02.2019
-- `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl` failed: _A GDAL API version must be specified. Provide a path to gdal-config using a GDAL_CONFIG environment variable or use a GDAL_VERSION environment variable._
-  - bei diesem Fehler ist die manuelle Installation von fiona nötig:  
-  `pip.exe install C:\Users\David\python\packages\Fiona-1.8.4-cp37-cp37m-win32.whl` ✓
-  - dann kann geopandas fehlerfrei installiert werden:  
-   `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl`✓
-- no Kernels installed.  
- `python -m pip install ipykernel`✓  
- `python -m ipykernel install --user`✓
+
+ ``` bash
+ cd environments\environment\scripts\
+ activate
+ python -m pip install ipykernel # falls noch nicht geschehen  
+ python -m ipykernel install --user --name xyz --display-name xyz
+ ```
 - restart atom ✓  
 
 **13.03.2019 Einrichtung von ipykernel in virtualenv python-atom:**
@@ -104,6 +111,8 @@ file can be an on-disk file opened for binary reading, an **io.BytesIO** object,
 
 ⚠ Danach öffnet sich beim Start von Atom Windows-Administrationsprompt.. ebenso beim Start von Hydrogen
 
+Hydrogen `Unexpected EOF`:  
+besser als run line ist dann run cell mit Ctrl+Alt+Enter
 ### Ausführung von cartopy_convert.py aus geopandas_examples
 01.02.2019
 - `pip install matplotlib`
