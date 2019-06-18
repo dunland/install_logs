@@ -1,4 +1,4 @@
-# Python
+﻿# Python
 ## Tutorials
 [Getting started with Python @ opentechschool](https://opentechschool.github.io/python-beginners/en/getting_started.html#what-is-python-exactly)
 
@@ -16,7 +16,30 @@
 - im Anaconda Prompt mit z.B. `conda install python=3.5` für Python3.5
 
 ## Packages
+
+### General  
+
 Bei Kompatibilitätsproblemen mit von PyPi (pip) bereitgestellten packages können Windows binaries von [Christoph Gohlke](https://www.lfd.uci.edu/~gohlke/pythonlibs/) heruntergeladen werden.
+
+#### How does Python find packages?  
+https://leemendelowitz.github.io/blog/how-does-python-find-packages.html  
+Python findet Packages, die in den Systempfaden verzeichnet sind:  
+`sys.path`  
+> When you import a module, you usually can check the __file__ attribute of the module to see where the module is in your filesystem:
+``` python
+> import numpy
+> numpy.__file__
+'/usr/local/lib/python2.7/dist-packages/numpy/__init__.pyc'
+```   
+
+> imp.find_module can be used to find a module:
+``` python
+> import imp
+> imp.find_module('numpy')
+(None, '/usr/local/lib/python2.7/dist-packages/numpy', ('', '', 5))
+```
+
+
 ### Geopandas:
 #### known issues
 01.02.2019
@@ -25,6 +48,8 @@ Bei Kompatibilitätsproblemen mit von PyPi (pip) bereitgestellten packages könn
   `pip.exe install C:\Users\David\python\packages\Fiona-1.8.4-cp37-cp37m-win32.whl` ✓
   - dann kann geopandas fehlerfrei installiert werden:  
    `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl`✓
+  
+  - auch einen Versuch wert: in Anaconda Prompt `conda install -c conda-forge gdal`
 
 ### ipykernel
 zur Ausführung von ipython kernels, worauf z.B. Jupyter Notebook und IPython basiert.  
