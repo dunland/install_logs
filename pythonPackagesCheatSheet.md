@@ -1,4 +1,46 @@
 # Packages Cheat Sheets
+Collection of small applications I have used the packages for.
+
+## Matplotlib
+### Animation
+https://brushingupscience.com/2016/06/21/matplotlib-animations-the-easy-way/  
+https://matplotlib.org/3.1.1/api/animation_api.html  
+simple plot animation with draw() instead of plotting repetitively  
+
+``` python
+# %%
+import matplotlib
+matplotlib.use('Qt5Agg')
+import matplotlib.pyplot as plt
+import random
+ 
+ysample = random.sample(range(-50, 50), 100)
+ 
+xdata = []
+ydata = []
+ 
+plt.show()
+ 
+axes = plt.gca()
+axes.set_xlim(0, 100)
+axes.set_ylim(-50, +50)
+line, = axes.plot(xdata, ydata, 'r-')
+ 
+for i in range(100):
+    xdata.append(i)
+    ydata.append(ysample[i])
+    line.set_xdata(xdata)
+    line.set_ydata(ydata)
+    plt.draw()
+    plt.pause(0.1)
+ 
+# add this if you don't want the window to disappear at the end
+plt.show()
+```
+
+## Draw between subplots:
+https://www.cilyan.org/blog/2016/01/23/matplotlib-draw-between-subplots/
+
 ## Pandas DataFrames:  
 `df` for DataFrames
 
