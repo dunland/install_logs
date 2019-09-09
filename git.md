@@ -1,6 +1,17 @@
 # Github commands
 very good documentation on: https://www.atlassian.com/git/tutorials/
 
+## create repo from folder:  
+``` bash
+git init
+git add .
+git commit -m "<commit message>"
+# create repo online, then:  
+git remote add origin <url>
+git pull origin master --allow-unrelated-histories
+git push -u origin master
+``` 
+
 ## switch branch
 Switching from master to "Areaplot". **Case-sensitive**!
 
