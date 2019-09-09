@@ -1,7 +1,17 @@
 # Github commands
 very good documentation on: https://www.atlassian.com/git/tutorials/
 
-## create repo from folder:  
+## Global
+
+### setting your account's global identity:
+``` bash
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+```
+
+## Repositories
+
+### create repo from folder:  
 ``` bash
 git init
 git add .
@@ -12,7 +22,7 @@ git pull origin master --allow-unrelated-histories
 git push -u origin master
 ``` 
 
-## switch branch
+### switch branch
 Switching from master to "Areaplot". **Case-sensitive**!
 
 ``` bash
@@ -22,7 +32,7 @@ git fetch
 git pull
 ```
 
-## merging branches
+### merging branches
 
 1. prepare by switching to receiving branch
 2. check for remote changes: fetch & pull
