@@ -8,6 +8,8 @@ very good documentation on: https://www.atlassian.com/git/tutorials/
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
+### adding SSH-key to account:
+https://help.github.com/en/articles/connecting-to-github-with-ssh
 
 ## Repositories
 
