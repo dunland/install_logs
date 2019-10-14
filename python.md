@@ -1,4 +1,6 @@
-﻿# Python
+
+# Python
+
 ## Tutorials
 [Getting started with Python @ opentechschool](https://opentechschool.github.io/python-beginners/en/getting_started.html#what-is-python-exactly)
 
@@ -9,6 +11,12 @@
   sys.path  # list of strings that specifies the search path for modules
   sys.prefix  # string giving the site-specific directory prefix where the platform independent Python files are installed
   ```
+Hinzufügen eines Pfads zu sys.path:
+```
+import sys
+sys.path.insert(0,'/path/to/mod_directory') # am Anfang
+sys.path.append(mod_directory) # ans Ende
+```
 
 ## Installation
 - in Windows per Eingabeaufforderung mit [chocolatey](https://chocolatey.org/):  
@@ -48,7 +56,7 @@ Python findet Packages, die in den Systempfaden verzeichnet sind:
   `pip.exe install C:\Users\David\python\packages\Fiona-1.8.4-cp37-cp37m-win32.whl` ✓
   - dann kann geopandas fehlerfrei installiert werden:  
    `C:\Users\David\python\environments\python-atom\Scripts>pip.exe install C:\Users\David\python\packages\geopandas-0.4.0-py2.py3-none-any.whl`✓
-  
+
   - auch einen Versuch wert: in Anaconda Prompt `conda install -c conda-forge gdal`
 
 ### ipykernel
@@ -56,6 +64,11 @@ zur Ausführung von ipython kernels, worauf z.B. Jupyter Notebook und IPython ba
 `python -m ipykernel install --user --name xyz --display-name xyz`  
 
 ![iypthon Kernels in Jupyter Notebook](img/python/ipykernels.png)
+
+### Matplotlib
+`matplotlib.use('Qt5Agg') # error: cannot load any qt binding`  
+`pip install PyQt5`
+
 
 ### Pickle
 [pickle Doc](https://docs.python.org/3/library/pickle.html#data-stream-format)
@@ -81,10 +94,13 @@ file can be an on-disk file opened for binary reading, an **io.BytesIO** object,
 ## Virtual Envs
 - in Ubuntu:
   - Using **virtualenv**:
+    - create: `virtualenv <dir> --python=python[X]`
+    - activate:
     ``` bash
       virtualenv <DIR>
       source <DIR>/bin/activate
     ```
+    - deactivate: `deactivate`
   - vitualenvwrapper is an extension for virtualenv
 
   - Using **venv**:
