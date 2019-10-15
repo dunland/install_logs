@@ -20,6 +20,11 @@ rename a folder: `mv /home/user/oldname /home/user/newname`
 
 `history` shows terminal command history
 
+## symlinks
+create symlink: `sudo ln -s /path/to/file/file-to-link /destination/folder/`  
+show symlink origin: `readlink -f symlinkname`
+
+
 ## Text File Handling
 
 `touch ubuntu_commands.md` creates text file
