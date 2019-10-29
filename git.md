@@ -13,6 +13,30 @@ https://help.github.com/en/articles/connecting-to-github-with-ssh
 
 ## Repositories
 
+### submodules
+
+#### clone git with submodules
+`git clone --recursive https://github.com/sonydevworld/spresense.git`  
+After repositories have been cloned, each submodule is in 'Detached HEAD' state. Master branch have to be checked out before you can start developing.  
+`git submodule foreach git checkout master`
+
+#### adding existing repo as submodule
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+use `git submodule add`:
+
+``` bash
+$ git submodule add https://github.com/chaconinc/DbConnector
+Cloning into 'DbConnector'...
+remote: Counting objects: 11, done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 11 (delta 0), reused 11 (delta 0)
+Unpacking objects: 100% (11/11), done.
+Checking connectivity... done.
+```
+
+
+
 ### create repo from folder:  
 ``` bash
 git init
