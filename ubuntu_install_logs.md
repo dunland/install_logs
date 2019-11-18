@@ -1,0 +1,114 @@
+# Ubuntu install logs
+
+## CSound Cabbage: Building
+
+1. Download Cabbage: https://www.cabbageaudio.com/download/  
+2. Download JUCE: https://shop.juce.com/get-juce/download
+3. build JUCE:  
+``` bash
+1133  sudo mv ~/Downloads/JUCE /opt/JUCE
+ 1134  cd /opt/JUCE/
+ 1136  cd extras/Projucer/Builds/LinuxMakefile/
+ 1138  sudo apt-get install libcurl-dev
+ 1139  sudo apt-get install libcurl4-gnutls-dev
+ 1141  sudo apt-get install libfreetype6-dev
+ 1145  pkg-config --cflags --libs freetype2
+ 1164  sudo mv /usr/include/freetype2/* /usr/include/
+ 1166  apt-cache search xrandr
+ 1167  sudo apt-get install libxrandr-dev
+ 1169  apt-cache search xinerama
+ 1170  sudo apt-get install libxinerama-dev
+ 1172  sudo apt-cache search xcursor
+ 1173  sudo apt-get install libxcursor-dev
+ 1175  sudo apt-get install webkit2gtk-4.0
+ 1176  sudo apt-get install gtk+-x11-3.0
+ 1177  make
+```
+
+``` bash
+1120  cd ~/SDKs/
+ 1121  ./copy_vst2_to_vst3_sdk.sh 
+ 1122  mkdir build
+ 1123  cmake --version
+ 1124  sudo apt-get upgrade
+ 1125  cd VST3_SDK/
+ 1126  make
+ 1127  cd ../build/
+ 1128  make ../VST3_SDK
+ 1129  cmake ../VST3_SDK
+ 1130  sudo apt install cmake
+ 1131  cmake ../VST3_SDK
+ 1132  sudo apt-cache search xcb-util
+ 1133  sudo apt-get install libxcb-xrm-dev
+ 1134  cmake ../VST3_SDK
+ 1135  sudo apt-cache search xcb-cursor
+ 1136  sudo apt-get install libxcb-cursor-dev
+ 1137  cmake ../VST3_SDK
+ 1138  sudo apt-cache search xcb-keysyms
+ 1139  sudo apt-get install libxcb-keysyms-dev
+ 1140  sudo apt-get install libxcb-keysyms1-dev
+ 1141  cmake ../VST3_SDK
+ 1142  sudo apt-get install libxcb-xkb-dev
+ 1143  cmake ../VST3_SDK
+ 1144  sudo apt-cache search xkbcommon
+ 1145  sudo apt-get install xcb
+ 1146  cmake ../VST3_SDK
+ 1147  sudo apt-cache search xkbcommon-x11
+ 1148  sudo apt-get install libxkbcommon-x11-dev
+ 1149  cmake ../VST3_SDK
+ 1150  sudo apt-cache search gtkmm-3.0
+ 1151  sudo apt-get install libgtkmm-3.0-dev
+ 1152  cmake ../VST3_SDK
+ 1153  sudo apt-get install sqlite3-dev
+ 1154  sudo apt-cache search sqlite3
+ 1155  sudo apt-get install sqlite3
+ 1156  cmake ../VST3_SDK
+ 1157  whereis sqlite3
+ 1158  find | grep sqlite3.pc
+ 1159  locate sqlite3.pc
+ 1160  sudo updatedb
+ 1161  locate sqlite3.pc
+ 1162  find sqlite3.pc
+ 1163  sudo apt-get install libsqlite3-dev
+ 1164  cmake ../VST3_SDK
+
+```
+
+** FAILED **
+
+## purr-data (2019-11-11)
+
+nach vielen Installationsversuchen (von git und anderen Quellen), hat diese Variante funktioniert:
+
+from https://github.com/agraef/purr-data/wiki/Installation#linux
+
+insert your Ubutntu Version for "xUbuntu_18.04".
+``` bash
+sudo su
+
+wget -nv https://download.opensuse.org/repositories/home:aggraef/xUbuntu_18.04/Release.key
+apt-key add Release.key
+
+echo 'deb http://download.opensuse.org/repositories/home:/aggraef/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:aggraef.list
+apt update
+
+apt install purr-data
+```
+
+### pd-aubio
+
+``` bash
+sudo apt-get install aubio-tools libaubio-dev libaubio-doc -y
+sudo apt-get install pd-aubio
+cd /~Downloads/
+tar xf pd-aubio-0.4.tar.bz2
+cd pd-aubio-0.4
+./waf configure build
+sudo ./waf install
+sudo cp /usr/lib/pd/extra/aubio /opt/purr-data/lib/pd-l2ork/extra/aubio
+purr-data -lib aubio
+```
+
+
+
+

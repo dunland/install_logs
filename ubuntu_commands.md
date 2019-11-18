@@ -50,3 +50,13 @@ show symlink origin: `readlink -f symlinkname`
 `touch ubuntu_commands.md` creates text file
 `gedit ubuntu_commands.md` opens text file for changes
 
+## pdf
+merge pdfs: `pdftk input1.pdf input2.pdf input3.pdf cat output out.pdf`
+
+## audio
+extract audio from video using ffmpeg:
+```
+sudo apt install ffmpeg
+ffmpeg -i VIDEOFILE -acodec libmp3lame -metadata TITLE="Name of Song" OUTPUTFILE.mp3
+```
+
