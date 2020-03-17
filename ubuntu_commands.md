@@ -11,13 +11,30 @@ dav@dav-lx:~$ uname -m
 x86_64
 ```
 
+`lshw` - list hardware
+
 `top` -- task manager
+
+`dmesg`	-print system messages history 
+
+
+## Hardware
+`lsusb` shows list of connected USB devices
+`cat /proc/asound/cards` displays active sound cards
+
+
 
 ## files and folders
 
+### move, rename, copy, delete
 moving folders: `mv from/path to/path`  
 rename a folder: `mv /home/user/oldname /home/user/newname`  
 
+### symlinks
+create symlink: `sudo ln -s /path/to/file/file-to-link /destination/folder/`  
+show symlink origin: `readlink -f symlinkname`
+
+### permissions
 changing folder ownership: `sudo chown -R $USER ~/.blabla` (Make the current user own everything inside the folder (and the folder itself))  
 
 list permission of folder: `ls -l`
@@ -34,24 +51,24 @@ drwxr-xr-x 12 root root 4096 Okt 22 00:42  STEREO
 drwxr-xr-x  2 root root 4096 Okt 22 00:42 'System Volume Information'
 ```
 
+### Text File Handling
+
+`touch ubuntu_commands.md` creates text file
+`gedit ubuntu_commands.md` opens text file for changes
+
+#### pdf
+merge pdfs: `pdftk input1.pdf input2.pdf input3.pdf cat output out.pdf`
+
+
+
+## processes
+`ps aux | grep XXXX` shows active processes containing string XXXX in their title
 
 
 ## terminal
 
 `history` shows terminal command history
 
-## symlinks
-create symlink: `sudo ln -s /path/to/file/file-to-link /destination/folder/`  
-show symlink origin: `readlink -f symlinkname`
-
-
-## Text File Handling
-
-`touch ubuntu_commands.md` creates text file
-`gedit ubuntu_commands.md` opens text file for changes
-
-## pdf
-merge pdfs: `pdftk input1.pdf input2.pdf input3.pdf cat output out.pdf`
 
 ## audio
 extract audio from video using ffmpeg:

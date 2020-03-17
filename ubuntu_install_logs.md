@@ -76,6 +76,19 @@
 
 ** FAILED **
 
+## csound in python
+### csound-python
+
+downloaded from https://mageia.pkgs.org/7/mageia-core-release-x86_64/csound-python-6.10.0-1.mga7.x86_64.rpm.html  
+`sudo apt-get install alien dpkg-dev debhelper build-essential`  
+`sudo alien Downloads/csound-python-6.10.0-1.mga7.x86_64.rpm` --> csound-python_6.10.0-2_amd64.deb generated --> ausführen  
+
+** FAILED **
+
+### ctcsound
+documentation: https://csound.com/docs/ctcsound/ctcsound-API.html
+installierbar mit `pip install ctcsound` (oder pip3)
+
 ## purr-data (2019-11-11)
 
 nach vielen Installationsversuchen (von git und anderen Quellen), hat diese Variante funktioniert:
@@ -109,6 +122,19 @@ sudo cp /usr/lib/pd/extra/aubio /opt/purr-data/lib/pd-l2ork/extra/aubio
 purr-data -lib aubio
 ```
 
+
+## processing
+
+### gstreamer-based video library
+Version 1.0 of the video library uses gstreamer 0.10.x, which is deprecated an may be missing in the Linux distribution. There will be a v2.0 of the library, which has been updated to use gstreamer 1.x.  
+
+**Error:** `UnsatisfiedLinkError: Error looking up function 'gst_date_get_type': /usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so: undefined symbol: gst_date_get_type`  
+[fix](https://github.com/processing/processing-video/releases/tag/r6-v2.0-beta4):  
+1. Download Video Library 2.0 (beta)  
+2. copy to home/dav/sketchbook/libraries/  
+3. also install gstreamer correctly:  
+ `apt-get install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio`
+done! **Achtung:** Videos müssen in Ordner sketch/data/ liegen!
 
 
 
