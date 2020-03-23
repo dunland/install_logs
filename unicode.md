@@ -13,6 +13,8 @@ u+00a1 ¡
 u+00e6 æ
 u+00d0 Ð
 u+00f0 ð
+u+00de Þ
+u+00fe þ
 
 ## typing
 u+2011 ‑ non-breaking hyphen
@@ -27,3 +29,5 @@ u+2713 ✓
 u+2514 └
 u+2500 ─
 u+2502 │
+
+Tónlistarþróunarmálaráðherrann

@@ -15,7 +15,12 @@ x86_64
 
 `top` -- task manager
 
-`dmesg`	-print system messages history 
+`dmesg`	-- print system messages history 
+
+`fdisk -l` -- List  the  partition  tables  for the specified devices and then
+              exit.  If no devices are given, those mentioned in  /proc/parti‐
+              tions (if that file exists) are used.
+
 
 
 ## Hardware
