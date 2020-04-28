@@ -3,28 +3,55 @@ Collection of small applications I have used the packages for.
 
 ## Matplotlib
 
-### bekannte Fehler:
-Wenn matplotlib nach Ausführen des Skripts alle Figs schließt, versuche die Zeile `matplotlib.use('Qt5Agg')` erneut auszuführen.
+### General
+#### bekannte Fehler:
+- `plt.show()` zeigt nichts an:
+  - nutze `plt.figure` anstelle von subplots
+  - ODER: ändere das Backend!
+  `matplotlib.use('renderer')`  
+  --> `matplotlib.rcsetup.all_backends` displays all possible Strings
 
-### backend
-`matplotlib.use('renderer')`  
---> `matplotlib.rcsetup.all_backends` for all possible Strings
-
-`matplotlib.use('Qt5Agg') # error: cannot load any qt binding`  
+- `matplotlib.use('Qt5Agg') # error: cannot load any qt binding`  
 **--> Ubuntu:** `pip install PyQt5`  
 **--> Win 10:** download Qt5 from from qt.io; (install PyQt5?)
 
-### Position und Größe des Fensters bestimmen
-#### using Qt5:
+- Wenn matplotlib nach Ausführen des Skripts alle Figs schließt, versuche die Zeile `matplotlib.use('Qt5Agg')` erneut auszuführen.
+
+### Plots
+#### simple plot
+
+``` python
+import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Data for plotting
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2 * np.pi * t)
+
+fig, ax = plt.subplots()
+ax.plot(t, s)
+
+ax.set(xlabel='time (s)', ylabel='voltage (mV)',
+       title='About as simple as it gets, folks')
+ax.grid()
+
+fig.savefig("test.png")
+plt.show()
+```
+
+### Plot Design
+#### Position und Größe des Fensters bestimmen
+- using Qt5:  
 `plt.get_current_fig_manager().window.setGeometry(x,y,w,h)  # defines position for figure. (x, y, w, h from upper left screen margin) Only works with QT backend`
 
 #### subplots:
 `fig.subplots_adjust(left=0.08, right=0.98, bottom=0.05, top=0.9, hspace=0.4, wspace=0.3)`
 
-### Legende
-Legende außerhalb von Plot: `plt.legend(loc='best', bbox_to_anchor=(1.45,1))`  
+#### Legende
+- Legende außerhalb von Plot: `plt.legend(loc='best', bbox_to_anchor=(1.45,1))`  
 
-### Ticks
+#### Ticks
 [Übersicht Tick-Formatter:](https://matplotlib.org/3.1.1/gallery/ticks_and_spines/tick-formatters.html)  
 
 ![Übersicht über Tick-Formatter](img/python/mpl/tickFormatters.png)
@@ -84,32 +111,45 @@ plt.show()
 ### Draw between subplots:
 https://www.cilyan.org/blog/2016/01/23/matplotlib-draw-between-subplots/
 
+---
+
 ## Pandas DataFrames:  
 `df` for DataFrames
 
-`df.info()` for shape of object types of the data  
-`df.describe()` returns a summary of statistics for numerical colums in the DataFrame  
-`pd.DataFrame.merge()` Merge DataFrame or named Series objects with a database-style join.  
-`pd.DataFrame.drop()` Drop specified labels from rows or columns.  
- `df.sort_values(by="column_name", axis=0, ascending=True, inplace=False, kind='quicksort', na_position='last')` sort by the values along either axis
+### Meta:
+- get rows: `len(df.index)`  
+- get shape of object types of the data `df.info()`  
+- summary of statistics for numerical colums in the DataFrame: `df.describe()` 
 
- ### Accessing:
- `df.column('row')`  
- `df.loc['row', 'col']`  
- `df.iloc[4,2]` # [row, col]  
+### Creation:
+![create DataFrames with columns](img/python/pandas/DataFrame_columnsCreationAndFill.png)
 
- selecting only some columns:
- `df_new = df[['col1', 'col2']]`
+### Accessing:
+get cells:  
+- `df.column('row')`  
+- `df.loc['row', 'col']`  
+- `df.iloc[4,2]` # [row, col]  
 
- **quickly filtering rows and creating columns:**  
- `df[df['column'] >= 5]`  
- `df.reset_index`  
- new column with operation: `df['new_col'] = df['some col'] * df['col B']`
+- selecting several columns: `df_new = df[['col1', 'col2']]`
+
+**quickly filtering rows and creating columns:**  
+- get all cells with entry >= 5: `df[df['column'] >= 5]`  
+`df.reset_index`  
+
+add new column with operation: `df['new_col'] = df['some col'] * df['col B']`
 
 ### Altering DataFrames:
 
+`pd.DataFrame.drop()` Drop specified labels from rows or columns.  
+`df.sort_values(by="column_name", axis=0, ascending=True, inplace=False, kind='quicksort', na_position='last')` sort by the values along either axis
+
 changing rows and colums: `df = df.transpose()`  
+
+#### merging
 [merging DataFrames](https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html#brief-primer-on-merge-methods-relational-algebra):
+
+`pd.DataFrame.merge()` Merge DataFrame or named Series objects with a database-style join.  
+
 ``` python
 table = pd.DataFrame(columns=['id', 'osm_id', 'lons', 'lats']) # table 1
 table['osm_id'] = table['osm_id'].astype(int) # make sure the type is the same
@@ -128,7 +168,9 @@ https://stackoverflow.com/questions/19851005/rename-pandas-dataframe-index
 > class pandas.Index[source]  
 >    Immutable ndarray implementing an ordered, sliceable set. The basic object storing axis labels for all pandas objects.
 
-##### DataFrame für ein Jahr erzeugen:
+### Anwendungsbeispiele
+
+#### DataFrame für ein Jahr erzeugen:
 
 ``` python
 # Create DataFrame for 2010
@@ -138,7 +180,7 @@ demand = pd.DataFrame(
 ```
   `freq=H` for frequeny=hourly [s. pandas-docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#timeseries-offset-aliases)
 
-##### mit weiteren Spalten füllen:  
+#### mit weiteren Spalten füllen:  
 ``` python
 demand['efh'] = bdew.HeatBuilding(
     demand.index, holidays=holidays, temperature=temperature,

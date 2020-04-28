@@ -1,5 +1,28 @@
 # Ubuntu install logs
 
+## enable hibernation
+
+1. find UUID for swap device: 
+``` bash
+sudo blkid
+
+/dev/sda1: UUID="65f47e96-a58e-4367-8ec8-248c60f21a64" TYPE="ext4" PARTUUID="6b04b0ed-01"
+/dev/sda2: UUID="a269984f-1894-41b9-9933-aa65712f4bad" TYPE="swap" PARTUUID="6b04b0ed-02"
+/dev/sda3: UUID="CA1880AF18809C57" TYPE="ntfs" PARTUUID="6b04b0ed-03"
+
+```
+
+2. copy UUID and insert in grub file:
+
+``` bash
+sudo gedit /etc/default/grub
+
+GRUB_CMDLINE_LINUX_DEFAULT="initcall_debug no_console_suspend resume=UUID=a269984f-1894-41b9-9933-aa65712f4bad"
+```
+
+3. `sudo update-grub`
+
+
 ## CSound Cabbage: Building
 
 1. Download Cabbage: https://www.cabbageaudio.com/download/  

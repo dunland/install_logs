@@ -24,6 +24,7 @@ u+2014 — em dash
 u+2015 ― horizontal bar  
 
 u+2713 ✓  
+u+2022 •  
 
 ## tree view
 u+2514 └  

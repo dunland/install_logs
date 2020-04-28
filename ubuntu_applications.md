@@ -12,3 +12,7 @@ Lightweight X11 minimalist tiling window manager written in Haskell
 
 ## okular
 render markdown files correctly
+
+## peek
+
+screen to gif or mp4 recorder
