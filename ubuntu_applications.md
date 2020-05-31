@@ -1,5 +1,8 @@
 # Ubuntu Applications
 
+## baobab
+folders+files allocation GUI
+
 ## compiz
 corrupt compiz results in glitchy display. Restart compiz is enough:
 ``` bash

@@ -97,6 +97,15 @@ drwxr-xr-x 12 root root 4096 Okt 22 00:42  STEREO
 drwxr-xr-x  2 root root 4096 Okt 22 00:42 'System Volume Information'
 ```
 
+### unpack/extract tar files
+`tar -xvzf archive.tar.gz -C output_folder`
+
+x - extract  
+v - verbose  
+z - filter the archive through gzip(1)  
+f - file selection  
+C - change to directory before performing any operations.
+
 ### Text File Handling
 
 `touch ubuntu_commands.md` creates text file

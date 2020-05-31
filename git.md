@@ -9,9 +9,38 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 ### adding SSH-key to account:
+https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+
 https://help.github.com/en/articles/connecting-to-github-with-ssh
 
+1. check for existing SSH key:
+`ls -al ~/.ssh` --> contains `id_rsa, id_rsa.pub, ...`?
+
+2. add key to ssh-agent
+``` bash
+$ eval "$(ssh-agent -s)"
+> Agent pid 59566
+$ ssh-add ~/.ssh/id_rsa
+```
+
+3. copy and add to github
+`cat ./ssh/id_rsa.pub` --> github>settings>SSH&GPG keys>new SSH key>add.
+
+4. Switching remote URLs from HTTPS to SSH
+``` bash
+$ git remote -v
+> origin  https://github.com/USERNAME/REPOSITORY.git (fetch)
+> origin  https://github.com/USERNAME/REPOSITORY.git (push)
+
+$ git remote set-url origin git@github.com:USERNAME/REPOSITORY.git
+```
+
 ## Repositories
+
+### add, commit, push
+`git add XY` - adds file to stash
+`git rm --cached XY` - removes file from stash
+`git commit -m "bla"` - creates commit named _bla_
 
 ### submodules
 

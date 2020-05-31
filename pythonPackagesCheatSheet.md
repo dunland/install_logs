@@ -8,7 +8,7 @@ Collection of small applications I have used the packages for.
 - `plt.show()` zeigt nichts an:
   - nutze `plt.figure` anstelle von subplots
   - ODER: ändere das Backend!
-  `matplotlib.use('renderer')`  
+  `matplotlib.use('renderer')` **muss vor `import matplotlib.pyplot` geschehen!**  
   --> `matplotlib.rcsetup.all_backends` displays all possible Strings
 
 - `matplotlib.use('Qt5Agg') # error: cannot load any qt binding`  
@@ -119,7 +119,7 @@ https://www.cilyan.org/blog/2016/01/23/matplotlib-draw-between-subplots/
 ### Meta:
 - get rows: `len(df.index)`  
 - get shape of object types of the data `df.info()`  
-- summary of statistics for numerical colums in the DataFrame: `df.describe()` 
+- summary of statistics for numerical colums in the DataFrame: `df.describe()`
 
 ### Creation:
 ![create DataFrames with columns](img/python/pandas/DataFrame_columnsCreationAndFill.png)
@@ -132,9 +132,11 @@ get cells:
 
 - selecting several columns: `df_new = df[['col1', 'col2']]`
 
-**quickly filtering rows and creating columns:**  
+### Filtering rows and creating columns:
+[Selecting Rows in Pandas Dataframes based on conditions](https://www.geeksforgeeks.org/selecting-rows-in-pandas-dataframe-based-on-conditions/)  
 - get all cells with entry >= 5: `df[df['column'] >= 5]`  
-`df.reset_index`  
+- single condition: `rslt_df = dataframe[dataframe['Percentage'] > 80] `
+- multiple conditions: `rslt_df = dataframe[(dataframe['Age'] == 21) & dataframe['Stream'].isin(options)] `
 
 add new column with operation: `df['new_col'] = df['some col'] * df['col B']`
 
